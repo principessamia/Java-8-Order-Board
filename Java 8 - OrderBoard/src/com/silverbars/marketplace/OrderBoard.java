@@ -37,7 +37,7 @@ public class OrderBoard {
 		ordersToCancel.forEach(orderToCancel-> {
 			String userId = orderToCancel.getUserId();
 			List<Order> liveOrdersByUser = liveOrders.get(userId);
-			liveOrdersByUser.remove(orderToCancel); // If I had more time, it would make sense to verify if the actual order was removed and throw an exception if not
+			liveOrdersByUser.remove(orderToCancel); 
 			if(liveOrdersByUser.size() == 0) {
 				liveOrders.remove(userId);
 			}
@@ -73,11 +73,10 @@ public class OrderBoard {
 		return sortedOrders;
 	}
 
-	// Didn't use a formatter since it's overkill here
 	private StringBuilder formatOrderSummary(StringBuilder builder, Map<Integer, Double> sortedOrders) {
 		sortedOrders.forEach((price, quantity) -> {
 			builder.append(quantity)
-			.append("kg for £")
+			.append("kg for Â£")
 			.append(price)
 			.append("\n");
 		});
